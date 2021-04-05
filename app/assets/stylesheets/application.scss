@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* header */
+
+header{
+   width: 100%;
+   background: linear-gradient(45deg, #d46c4f 0%, #d46c4f 30%, #9e4028 70%, #9e4028 100%);
+}
+
+.nav-item{
+   padding: 10px 20px;
+}
+
+.youkoso{
+  color: #BDB76B;
+  border: solid 3px #BDB76B;/*線色*/
+  padding: 0.5em;/*文字周りの余白*/
+  border-radius: 0.5em;/*角丸*/
+}
