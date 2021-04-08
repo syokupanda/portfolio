@@ -68,3 +68,6 @@ gem 'jquery-rails'
 
 # アイコン
 gem 'font-awesome-sass', '~> 5.13'
+
+# ユーザー認証
+gem 'devise'
