@@ -71,3 +71,14 @@ gem 'font-awesome-sass', '~> 5.13'
 
 # ユーザー認証
 gem 'devise'
+
+# tag 機能
+gem 'acts-as-taggable-on', '~> 6.0'
+
+# 画像投稿
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+# rubocop
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
