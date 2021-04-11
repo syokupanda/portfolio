@@ -1,0 +1,7 @@
+<h1>Recipes#show</h1>
+  <%= attachment_image_tag(@recipe, :image, size: "220x170", fallback: "no_image.jpg") %>
+  <%= @recipe.name %>
+  <%= @recipe.introduction %>
+  <%= link_to edit_recipe(@recipe.id) do %>
+    <p>編集</p>
+  <% end %>
