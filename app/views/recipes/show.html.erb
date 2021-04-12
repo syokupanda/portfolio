@@ -2,6 +2,9 @@
   <%= attachment_image_tag(@recipe, :image, size: "220x170", fallback: "no_image.jpg") %>
   <%= @recipe.name %>
   <%= @recipe.introduction %>
-  <%= link_to edit_recipe(@recipe.id) do %>
-    <p>編集</p>
+  <%= link_to edit_recipe_path(@recipe.id) do %>
+    <button type="button" class="btn btn-success">編集する</button>
+  <% end %>
+  <%= link_to recipe_path(@recipe.id), method: :delete do %>
+    <button type="button" class="btn btn-danger">削除する</button>
   <% end %>
