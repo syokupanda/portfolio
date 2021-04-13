@@ -1,9 +1,14 @@
-<h1>Recipes#index</h1>
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe_path(recipe.id) do %>
-    <%= attachment_image_tag(recipe, :image, size: "220x170", fallback: "no_image.jpg") %>
-  <% end %>
-  <%= recipe.name %>
-  <%= recipe.introduction %>
-  
-<% end %>
+<div class="container">
+  <h1>Recipes#index</h1>
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <div class="col-5 mx-3 my-3">
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= attachment_image_tag(recipe, :image, size: "220x170", fallback: "no_image.jpg") %>
+        <% end %>
+        <%= recipe.name %>
+        <%= recipe.introduction %>
+      </div>
+    <% end %>
+  </div>
+</div>
