@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
   get 'about' => 'homes#about'
-  resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resource :reviews, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :accounts, only: [:show, :edit, :update]
 
 end
