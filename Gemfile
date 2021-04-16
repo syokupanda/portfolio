@@ -82,3 +82,9 @@ gem "refile-mini_magick"
 # rubocop
 gem 'rubocop', require:false
 gem 'rubocop-rails', require:false
+
+# デプロイ用Gem（テストデプロイ時追加）
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
