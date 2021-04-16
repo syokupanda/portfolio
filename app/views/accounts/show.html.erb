@@ -1,0 +1,14 @@
+<h1>Accounts#show</h1>
+
+<%= @user.last_name %><%= @user.first_name %><br>
+<%= @user.last_name_kana %><%= @user.first_name_kana %><br>
+<%= @user.introduction %><br>
+<%= @user.email %><br>
+<%= link_to new_recipe_path do %>
+  <button type="button" class="btn btn-success">レシピ新規登録</button>
+<% end %>
+<%= link_to edit_account_path(@user.id) do %>
+  <button type="button" class="btn btn-success">編集する</button>
+<% end %>
+
+  <button type="button" class="btn btn-danger">削除する</button>
