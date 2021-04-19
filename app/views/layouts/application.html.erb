@@ -40,6 +40,11 @@
                     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
                   </li>
               <!-- 管理者側でログイン時-->
+              <% elsif admin_signed_in? %>
+                  <li class="nav-item">
+                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+                  </li>
+
               <!-- ログインしてない時 -->
               <% else %>
                 <div class="navbar-nav">
