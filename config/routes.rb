@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   devise_for :admins, controllers: {
     :passwords => 'admins/passwords',
     :sessions => 'admins/sessions'
@@ -17,5 +19,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :accounts, only: [:show, :edit, :update]
+  
+  namespace :admins do
+  end
 
 end

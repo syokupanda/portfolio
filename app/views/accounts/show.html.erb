@@ -1,14 +1,47 @@
-<h1>Accounts#show</h1>
+<div class="container">
+  <h1>Accounts#show</h1>
+  <div class="row">
+    <div class="col-8">
+      <div class="account_name_area">
+        <div class="account_icon">
+          <p>アイコン設定用</p>
+        </div>
+        <div class="account_name">
+          <%= @user.last_name %><%= @user.first_name %><br>
+          <%= @user.last_name_kana %><%= @user.first_name_kana %><br>
+        </div>
+        <div class="account_option">
+          <div class="new_recipe_button">
+            <%= link_to new_recipe_path do %>
+              <button type="button" class="btn btn-primary">レシピ新規登録</button>
+            <% end %>
+          </div>
+          <div class="edit_button">
+            <%= link_to edit_account_path(@user.id) do %>
+              <button type="button" class="btn btn-success">編集する</button>
+            <% end %>
 
-<%= @user.last_name %><%= @user.first_name %><br>
-<%= @user.last_name_kana %><%= @user.first_name_kana %><br>
-<%= @user.introduction %><br>
-<%= @user.email %><br>
-<%= link_to new_recipe_path do %>
-  <button type="button" class="btn btn-success">レシピ新規登録</button>
-<% end %>
-<%= link_to edit_account_path(@user.id) do %>
-  <button type="button" class="btn btn-success">編集する</button>
-<% end %>
+              <button type="button" class="btn btn-danger">退会する</button><!--別の場所にしようかな-->
+          </div>
+        </div>
+      </div>
+      <div class="account_intoroduction">
+        <%= @user.introduction %>
+      </div>
+      <div class="pick_up">
+        ユーザー側はおすすめレシピ
+        農家は作物紹介
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="posting_recipe">
+        <p>投稿したレシピ</p>
+      </div>
+    </div>
+  </div>
 
-  <button type="button" class="btn btn-danger">削除する</button>
+
+  <br>
+  <%= @user.email %>
+
+</div>
