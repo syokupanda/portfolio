@@ -1,45 +1,70 @@
-<h1>Recipes#show</h1>
-  <%= attachment_image_tag(@recipe, :image, size: "220x170", fallback: "no_image.jpg") %>
-  <%= @recipe.name %>
-  <%= @recipe.introduction %>
-  <%= link_to edit_recipe_path(@recipe.id) do %>
-    <button type="button" class="btn btn-success">編集する</button>
-  <% end %>
-  <%= link_to recipe_path(@recipe.id), method: :delete do %>
-    <button type="button" class="btn btn-danger">削除する</button>
-  <% end %>
+  <div class="container">
+    <h1>レシピ詳細</h1>
+    <div class="row">
+      <div class="col-6">
+        <p class="recipe_title"><%= @recipe.name %></p>
+        <div class="recipe_image">
+          <%= attachment_image_tag(@recipe, :image, size: "520x360", fallback: "no_image.jpg") %>
+        </div>
+        <div class="recipe_option">
+          <div class="recipe_favorite">
+            <% if @recipe.favorited_by?(current_user) %>
+                <%= link_to recipe_favorites_path(@recipe.id), method: :delete do %>
+                  ♥<%= @recipe.favorites.count %>いいね
+                <% end %>
+            <% else %>
+                <%= link_to recipe_favorites_path(@recipe.id), method: :post do %>
+                  ♡<%= @recipe.favorites.count %>いいね
+                <% end %>
+            <% end %>
+          </div>
+          <div class="recipe_option_button">
+            <%= link_to edit_recipe_path(@recipe.id) do %>
+              <button type="button" class="btn btn-success">編集する</button>
+            <% end %>
+            <%= link_to recipe_path(@recipe.id), method: :delete do %>
+              <button type="button" class="btn btn-danger">削除する</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="use_food">
+          必要材料
+        </div>
+        <div class="recipe_point">
+          <p>調理ポイント</p>
+          <p><%= @recipe.introduction %></p>
+        </div>
+      </div>
+    </div>
 
-  <div class="recipe_favorite">
-    <% if @recipe.favorited_by?(current_user) %>
-      <p>
-        <%= link_to recipe_favorites_path(@recipe.id), method: :delete do %>
-          ♥<%= @recipe.favorites.count %>いいね
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to recipe_favorites_path(@recipe.id), method: :post do %>
-          ♡<%= @recipe.favorites.count %>いいね
-        <% end %>
-      </p>
-    <% end %>
-  </div>
 
-  <div class="new_revew">
-    <%= form_with(model:[@recipe, @review], url:recipe_reviews_path(@recipe.id), local:true) do |f| %>
-      <%= f.label :"レビュー" %>
-      <div id="evaluate_stars"></div>
-      <%= f.text_field :comment %>
-      <%= f.submit 'レビュー投稿', class: "btn btn-success" %>
-    <% end %>
-  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          【手順予定地】
+        </div>
+      </div>
+    </div>
 
-  <div class="reviews">
-    <p>レビュー数：<%= @recipe.reviews.count %></p>
-    <% @recipe.reviews.each do |review| %>
-      <%= review.rate %>
-      <%= review.comment %>
-    <% end %>
+
+    <div class="new_revew">
+      <%= form_with(model:[@recipe, @review], url:recipe_reviews_path(@recipe.id), local:true) do |f| %>
+        <%= f.label :"レビュー" %>
+        <div id="evaluate_stars"></div>
+        <%= f.text_field :comment %>
+        <%= f.submit 'レビュー投稿', class: "btn btn-success" %>
+      <% end %>
+    </div>
+
+    <div class="reviews">
+      <p>レビュー数：<%= @recipe.reviews.count %></p>
+      <% @recipe.reviews.each do |review| %>
+        <%= review.rate %>
+        <%= review.comment %>
+      <% end %>
+    </div>
   </div>
 
 
