@@ -2,6 +2,16 @@
 
 <%= form_with model: @user, url:account_path, local:true do |f| %>
   <div class="field">
+    <%= f.label :"アイコン画像" %><br>
+    <%= f.attachment_field :image %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :"ニックネーム" %>
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="field">
     <%= f.label :"姓" %><br>
     <%= f.text_field :last_name %>
   </div>
