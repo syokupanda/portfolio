@@ -41,6 +41,12 @@ header{
   border-radius: 0.5em;/*角丸*/
 }
 
+/* recipe_index */
+
+.recipe_index_image,.recipe_index_name,.recipe_index_username{
+  text-align: center;
+}
+
 /* recipe_show */
 .recipe_title{
   text-align: center;
@@ -108,7 +114,7 @@ header{
   margin-bottom: 5px;
 }
 
-.edit_button{
+.edit_button,.my_posting_recipe{
   text-align: center;
 }
 

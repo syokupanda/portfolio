@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @myrecipes = Recipe.where(user_id: @user.id)
   end
 
   def edit
@@ -18,6 +19,6 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:user).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :introduction, :email)
+    params.require(:user).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :introduction, :email, :nickname, :image)
   end
 end
