@@ -4,7 +4,7 @@
       <div class="col-xs-12 col-lg-6">
         <p class="recipe_title"><%= @recipe.name %></p>
         <div class="recipe_image">
-          <%= attachment_image_tag(@recipe, :image, size: "520x360", fallback: "no_image.jpg") %>
+          <%= attachment_image_tag(@recipe, :image, fallback: "no_image.jpg") %>
         </div>
         <div class="recipe_option">
           <div class="recipe_favorite">
@@ -43,7 +43,25 @@
     <div class="container">
       <div class="row">
         <div class="col-3">
-          【手順予定地】
+          <div class="making_box">
+            <% if @making.count == 0 %>
+              <%=link_to makings_new_path do %>
+                <button type="button" class="btn btn-success">調理手順を登録する</button>
+              <% end %>
+            <% else %>
+            　<% @making.each do |making| %>
+                <div class="making_image_box">
+                  <%= attachment_image_tag(making, :image, size: "140x90", fallback: "no_image.jpg") %>
+                </div>
+                <div class="making_process_box">
+
+                </div>
+            　<% end %>
+              <%=link_to makings_new_path do %>
+                <button type="button" class="btn btn-success">調理手順を追加する</button>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
