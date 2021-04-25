@@ -1,2 +1,57 @@
 <h1>Admins::Accounts#edit</h1>
-<p>Find me in app/views/admins/accounts/edit.html.erb</p>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-3">
+      姓名
+    </div>
+    <div class="col-8">
+      <%= @user.full_name %>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-3">
+      ニックネーム
+    </div>
+    <div class="col-8">
+      <%= @user.nickname %>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-3">
+      メールアドレス
+    </div>
+    <div class="col-8">
+      <%= @user.email %>
+    </div>
+  </div>
+
+<!--生産者ステータス　と　会員ステータス　の変更-->
+  <%= form_with model: @user, url:admins_account_path(@user), local:true do |f| %>
+    <div class="row">
+      <div class="col-2">
+        <%= f.label :"生産者ステータス" %>
+      </div>
+      <div class="col-5">
+        <%= f.radio_button :is_farmer, :true, checked: true %>
+        <span>生産者</span>
+        &nbsp;&nbsp;
+        <%= f.radio_button :is_farmer, :false%>
+        <span>一般ユーザー</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <%= f.label :"会員ステータス" %>
+      </div>
+      <div class="col-5">
+        <%= f.radio_button :is_deleted, :true, checked: true %>
+        <span>退会</span>
+        &nbsp;&nbsp;
+        <%= f.radio_button :is_deleted, :false%>
+        <span>有効</span>
+      </div>
+    </div>
+
+    <%= f.submit 'ユーザー情報更新', class: "btn btn-success" %>
+  <% end %>
+</div>

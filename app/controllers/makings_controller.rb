@@ -1,12 +1,14 @@
 class MakingsController < ApplicationController
   def new
     @making = Making.new
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   def create
     @making = Making.new(making_params)
+    @making.recipe_id = params[:recipe_id]
     @making.save
-    redirect_to recipes_path
+    redirect_to recipe_path(params[:recipe_id])
   end
 
   def edit
@@ -21,7 +23,7 @@ class MakingsController < ApplicationController
 
   private
 
-  def recipe_params
+  def making_params
     params.require(:making).permit(:recipe_id, :image, :process)
   end
 

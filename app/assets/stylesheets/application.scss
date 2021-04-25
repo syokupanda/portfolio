@@ -34,6 +34,11 @@ header{
    padding: 10px 20px;
 }
 
+.navbar-brand img{
+  width: 200px;
+  height: 50px;
+}
+
 .youkoso{
   color: #BDB76B;
   border: solid 3px #BDB76B;/*線色*/
@@ -41,6 +46,16 @@ header{
   border-radius: 0.5em;/*角丸*/
 }
 
+/* recipe_new, recipe_edit form */
+.recipe_point_box{
+  width: 500px;
+  height: 200px;
+}
+
+.recipe_ingredients_box{
+  width: 500px;
+  height: 200px;
+}
 /* recipe_index */
 
 .recipe_index_image,.recipe_index_name,.recipe_index_username{
@@ -102,11 +117,22 @@ header{
 }
 
 .account_name{
-  width: 30%;
+  width: 20%;
 }
 
 .account_option{
-  width: 30%;
+  width: 45%;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.account_option_head{
+  text-align: center;
+  border-bottom: double 6px orange;
 }
 
 .new_recipe_button{
@@ -135,4 +161,22 @@ header{
 .posting_recipe p{
   margin: 0;
   padding: 0;
+  text-align: center;
+}
+
+.pick_up h4{
+  text-align: center;
+}
+
+/* Admins 側 CSS */
+
+/* admins_accounts_index */
+.admins_accounts_index p{
+  font-size: 24px;
+}
+
+/* admins_category */
+.category_image img{
+  width: 160px;
+  height: 120px;
 }

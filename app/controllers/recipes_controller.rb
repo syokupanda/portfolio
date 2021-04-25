@@ -1,6 +1,11 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @search = Recipe.ransack(params[:q])
+    @recipes = @search.result(distinct: true)
+  end
+
+  def category_index
+    @recipes = Recipe.where(category_id: params[:category_id])
   end
 
   def show
@@ -11,6 +16,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @categories = Category.all
   end
 
   def create
@@ -21,6 +27,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @categories = Category.all
   end
 
   def update
@@ -39,7 +46,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :image, :introduction, :name, :tag_list)
+    params.require(:recipe).permit(:user_id, :image, :introduction, :name, :tag_list, :ingredients, :category_id, :recommend)
   end
 
 end

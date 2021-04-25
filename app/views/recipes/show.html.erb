@@ -1,8 +1,10 @@
   <div class="container">
     <h1>レシピ詳細</h1>
     <div class="row">
+
       <div class="col-xs-12 col-lg-6">
         <p class="recipe_title"><%= @recipe.name %></p>
+
         <div class="recipe_image">
           <%= attachment_image_tag(@recipe, :image, fallback: "no_image.jpg") %>
         </div>
@@ -28,44 +30,44 @@
           </div>
         </div>
       </div>
+
       <div class="col-xs-12 col-lg-6">
         <div class="use_food">
-          必要材料
+          <p>必要材料</p>
+          <%= simple_format(@recipe.ingredients) %>
         </div>
         <div class="recipe_point">
           <p>調理ポイント</p>
-          <p><%= @recipe.introduction %></p>
+          <p><%= simple_format(@recipe.introduction) %></p>
         </div>
       </div>
     </div>
-
 
     <div class="container">
       <div class="row">
         <div class="col-3">
           <div class="making_box">
             <% if @making.count == 0 %>
-              <%=link_to makings_new_path do %>
+              <%=link_to new_recipe_makings_path(@recipe.id) do %>
                 <button type="button" class="btn btn-success">調理手順を登録する</button>
               <% end %>
             <% else %>
-            　<% @making.each do |making| %>
-                <div class="making_image_box">
-                  <%= attachment_image_tag(making, :image, size: "140x90", fallback: "no_image.jpg") %>
-                </div>
-                <div class="making_process_box">
-
-                </div>
-            　<% end %>
-              <%=link_to makings_new_path do %>
+              <%=link_to new_recipe_makings_path(@recipe.id) do %>
                 <button type="button" class="btn btn-success">調理手順を追加する</button>
               <% end %>
+            　<% @making.each do |making| %>
+                <div class="making_image_box">
+                  <%= attachment_image_tag(making, :image, size: "140x90") %>
+                </div>
+                <div class="making_process_box">
+                  <%= making.process %>
+                </div>
+            　<% end %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
-
 
     <div class="new_revew">
       <%= form_with(model:[@recipe, @review], url:recipe_reviews_path(@recipe.id), local:true) do |f| %>

@@ -1,14 +1,33 @@
-<h1>Recipes#new</h1>
-
-<%= form_with model: @recipe, url:'/recipes', local:true do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.label :"レシピ完成品画像" %><br>
-  <%= f.attachment_field :image %><br>
-  <%= f.label :"レシピ名" %>
-  <%= f.text_field :name %>
-  <p>ポイント・一言</p>
-  <%= f.text_area :introduction %>
-  <%= f.label :tag_list %>
-  <%= f.text_field :tag_list, value: @recipe.tag_list.join(',') %>
-  <%= f.submit 'レシピ登録', class: "btn btn-success" %>
-<% end %>
+<div class="container">
+  <h1>Recipes#new</h1>
+  <div class="row">
+    <%= form_with model: @recipe, url:'/recipes', local:true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <div class="col-12 my-3">
+        <%= f.label :"レシピ完成品画像" %>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="col-12 my-3">
+        <%= f.label :"レシピ名" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="col-12 my-3">
+        <p>ポイント・一言</p>
+        <%= f.text_area :introduction, class: "new_recipe_point_box" %>
+      </div>
+      <div class="col-12 my-3">
+        <p>材料</p>
+        <%= f.text_area :ingredients, class: "new_recipe_ingredients_box" %>
+      </div>
+      <div class="col-12 my-3">
+        <p>カテゴリー</p>
+        <%= f.collection_select(:category_id, @categories, :id, :name) %>
+      </div>
+      <div class="col-12 my-3">
+        <%= f.label :tag_list %><br>
+        <%= f.text_field :tag_list, value: @recipe.tag_list.join(',') %>
+      </div>
+      <%= f.submit 'レシピ登録', class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

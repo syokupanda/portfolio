@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_074709) do
+ActiveRecord::Schema.define(version: 2021_04_25_095906) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,34 +25,23 @@ ActiveRecord::Schema.define(version: 2021_04_22_074709) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "farmers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.text "introduction"
-    t.boolean "is_deleted", default: false
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_farmers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_farmers_on_reset_password_token", unique: true
+    t.string "image_id"
+  end
+
+  create_table "crops", force: :cascade do |t|
+    t.string "image_id"
+    t.text "introduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "foods", force: :cascade do |t|
-    t.string "image_id"
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,6 +61,9 @@ ActiveRecord::Schema.define(version: 2021_04_22_074709) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "recommend", default: false
+    t.text "ingredients"
+    t.integer "category_id"
   end
 
   create_table "relationships", force: :cascade do |t|

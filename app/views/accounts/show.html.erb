@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Accounts#show</h1>
+  <h1><%= @user.nickname %>のマイページ</h1>
   <div class="row">
     <div class="col-xs-col-12 col-lg-8">
       <div class="account_name_area">
@@ -8,9 +8,15 @@
         </div>
         <div class="account_name">
 　        <%= @user.nickname %>
+　        <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", account_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "フォローする", account_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
         </div>
         <% if @user == current_user %>
           <div class="account_option">
+            <h5 class="account_option_head">アカウントオプション</h5>
             <div class="new_recipe_button">
               <%= link_to new_recipe_path do %>
                 <button type="button" class="btn btn-primary">レシピ新規登録</button>
@@ -22,6 +28,12 @@
               <% end %>
                 <button type="button" class="btn btn-danger">退会する</button><!--別の場所にしようかな-->
             </div>
+            <% if @user.is_farmer == true %>
+              <h5 class="account_option_head">生産者オプション</h5>
+                <%= link_to account_crops_path(@user.id) do %>
+                  <button type="button" class="btn btn-success">生産物登録</button>
+                <% end %>
+            <% end %>
           </div>
         <% else %>
         <% end %>
@@ -31,13 +43,21 @@
         <%= @user.introduction %>
       </div>
       <div class="pick_up">
-        ユーザー側はおすすめレシピ
-        農家は作物紹介
+        <% if @user.is_farmer == false %>
+          一般ユーザー
+        <% else %>
+        <h4>~私が作りました！~</h4>
+        <div class="slide">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </div>
+        <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-lg-4">
       <div class="posting_recipe">
-        <p>投稿したレシピ</p>
+        <p>投稿したレシピ  <%= @myrecipes.count %>件</p>
       </div>
       <div class="my_posting_recipe">
         <% @myrecipes.last(4).each do |myrecipe| %>
