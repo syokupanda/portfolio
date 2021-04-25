@@ -1,3 +1,19 @@
 <%= link_to new_admin_session_path do %>
   <p>管理者ページへ</p>
 <% end %>
+<div class="container">
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-4">
+        <%= link_to category_category_index_path(category.id) do %>
+          <div class="category_image">
+            <%= attachment_image_tag(category, :image, fallback: "no_image.jpg") %>
+            <p>
+              <%= category.name %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

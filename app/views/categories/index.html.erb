@@ -1,0 +1,29 @@
+<div class="container">
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>カテゴリ名</th>
+        <th>
+          <%= link_to new_category_path do %>
+            <button type="button" class="btn btn-success">カテゴリー登録</button>
+          <% end %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td>
+            <div class="category_image">
+              <%= attachment_image_tag(category, :image, fallback: "no_image.jpg") %>
+            </div>
+          </td>
+          <td><%= category.name %></td>
+          <td>
+            <%= link_to '削除', category_path(category), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+  </div>
+</div>

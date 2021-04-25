@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
 
 
   belongs_to :user
+  has_many :making, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
 

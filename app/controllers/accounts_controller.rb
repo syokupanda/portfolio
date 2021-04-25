@@ -1,5 +1,9 @@
 class AccountsController < ApplicationController
 
+  def index
+    @users = User.where(is_farmer: "true")
+  end
+
   def show
     @user = User.find(params[:id])
     @myrecipes = Recipe.where(user_id: @user.id)
