@@ -46,6 +46,8 @@ header{
   border-radius: 0.5em;/*角丸*/
 }
 
+/* body */
+
 /* recipe_new, recipe_edit form */
 .recipe_point_box{
   width: 500px;
@@ -63,10 +65,15 @@ header{
 }
 
 /* recipe_show */
+
 .recipe_title{
   text-align: center;
   font-size: 24px;
 
+}
+
+.recipe_image{
+  margin-bottom: 10px;
 }
 
 .recipe_image img {
@@ -74,12 +81,12 @@ header{
   margin: 0 auto;
 }
 
-.recipe_option{
-  display: flex;
+#favorites_button{
+  width: 50%;
 }
 
-.recipe_favorite{
-  width: 50%;
+.recipe_option{
+  display: flex;
 }
 
 .recipe_option_button{
@@ -104,6 +111,22 @@ header{
   background: #cde4ff;
   border-top: solid 5px #5989cf;
   border-bottom: solid 5px #5989cf;
+}
+
+
+.making_image_box img{
+  width: 100%;
+}
+
+.making_edit a{
+  color: green;
+  font-size: 12px;
+}
+
+.making_destroy a{
+  color: gray;
+  font-size: 12px;
+
 }
 
 /* account_show */

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resource :reviews, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
-    resource :makings, only: [:new, :create, :edit, :update, :destroy]
+    resources :makings, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :accounts, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
