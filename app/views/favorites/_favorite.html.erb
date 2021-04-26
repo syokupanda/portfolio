@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <div class="recipe_favorite">
+    <% if recipe.favorited_by?(current_user) %>
+        <%= link_to recipe_favorites_path(recipe.id), method: :delete, remote: true do %>
+          ♥<%= recipe.favorites.count %>いいね
+        <% end %>
+    <% else %>
+        <%= link_to recipe_favorites_path(recipe.id), method: :post, remote: true do %>
+          ♡<%= recipe.favorites.count %>いいね
+        <% end %>
+    <% end %>
+  </div>
+<% else %>
+  ♥<%= recipe.favorites.count %>いいね <!-- ログインしていない場合はいいねの数のみ表示 -->
+<% end %>
