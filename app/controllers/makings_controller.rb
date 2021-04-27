@@ -2,13 +2,14 @@ class MakingsController < ApplicationController
   def new
     @making = Making.new
     @recipe = Recipe.find(params[:recipe_id])
+    @makings = Making.where(recipe_id: @recipe.id)
   end
 
   def create
     @making = Making.new(making_params)
     @making.recipe_id = params[:recipe_id]
     @making.save
-    redirect_to recipe_path(params[:recipe_id])
+    redirect_to new_recipe_making_path(params[:recipe_id])
   end
 
   def edit

@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @review = Review.new
     @making = Making.where(recipe_id: @recipe)
+    @user = User.find(@recipe.user_id)
   end
 
   def new
@@ -22,7 +23,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.save
-    redirect_to makings_new_path
+    redirect_to new_recipe_making_path(@recipe.id)
   end
 
   def edit

@@ -7,6 +7,8 @@ class AccountsController < ApplicationController
   def show
     @user = User.find(params[:id])
     @myrecipes = Recipe.where(user_id: @user.id)
+    @pick_up = Recipe.where(user_id: @user.id, recommend: true)
+    @crops = Crop.where(user_id: @user.id)
   end
 
   def edit
