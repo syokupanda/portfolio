@@ -1,0 +1,13 @@
+<div class="quit">
+  <p class="text-center">本当に退会しますか？</p>
+  <p class="text-center">
+    退会すると、このアカウントの会員情報の閲覧や<br>
+    レシピの投稿ができなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。<br>
+  </p>
+
+  <div class="text-center">
+    <%= link_to '退会しない', account_path(@user), class: "btn btn-primary" %>
+    <%= link_to '退会する', account_out_path, method: :patch, class: "btn btn-danger" %>
+  </div>
+</div>

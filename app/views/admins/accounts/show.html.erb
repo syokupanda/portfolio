@@ -1,5 +1,5 @@
-<h1>Admins::Accounts#show</h1>
 <div class="container">
+<h1>管理者ユーザー詳細</h1>
   <div class="row my-3">
     <div class="col-3">
       姓名
@@ -29,7 +29,11 @@
       生産者ステータス
     </div>
     <div class="col-8">
-      <%= @user.is_farmer %>
+      <% if @user.is_farmer == false %>
+        一般ユーザー
+      <% else %>
+        <span class="color-green">生産者ユーザー</span>
+      <% end %>
     </div>
   </div>
   <div class="row my-3">
@@ -37,7 +41,11 @@
       会員ステータス
     </div>
     <div class="col-8">
-      <%= @user.is_deleted %>
+      <% if @user.is_deleted == false %>
+        <span class="color-blue">有効</span>
+      <% else %>
+        <span class="color-red">退会</span>
+      <% end %>
     </div>
   </div>
   <div class="row my-3">
