@@ -1,6 +1,6 @@
 <div class="container">
   <h2>ユーザーログイン画面</h2>
-
+  <%= flash[:error] %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row">
       <div class="col-12 my-2">
