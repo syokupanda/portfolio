@@ -21,6 +21,16 @@ class AccountsController < ApplicationController
     redirect_to account_path(current_user)
   end
 
+  def quit
+    @user = current_user
+  end
+
+  def out
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
 
   private
 

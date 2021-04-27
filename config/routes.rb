@@ -25,6 +25,11 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :makings, only: [:new, :create, :edit, :update, :destroy]
   end
+  
+  get 'account/quit' => 'accounts#quit'
+  patch 'account/out' => 'accounts#out'
+  put 'account/out' => 'accounts#out'
+  
   resources :accounts, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     resources :crops, only: [:index, :new, :create, :edit, :update, :destroy]
