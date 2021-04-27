@@ -23,6 +23,7 @@
   box-sizing: border-box;
 }
 
+
 /* header */
 
 header{
@@ -39,14 +40,45 @@ header{
   height: 50px;
 }
 
-.youkoso{
-  color: #BDB76B;
-  border: solid 3px #BDB76B;/*線色*/
-  padding: 0.5em;/*文字周りの余白*/
-  border-radius: 0.5em;/*角丸*/
-}
+
 
 /* body */
+
+
+/* top */
+.top_logo{
+  width: 100%;
+  height: 100%;
+  background-image: url(/assets/top_background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding-top: 20%;
+}
+
+.about{
+  width: 100%;
+  height: 600px;
+}
+
+.about h1{
+  width: 150px;
+  margin: 10px auto;
+  font-size: 60px;
+}
+
+.about-text{
+  text-align: center;
+}
+
+.about-text p{
+  font-size: 24px;
+}
+
+.top_category_image img{
+  width: 90%;
+
+}
 
 /* recipe_new, recipe_edit form */
 .recipe_point_box{
@@ -58,18 +90,20 @@ header{
   width: 500px;
   height: 200px;
 }
+
+
 /* recipe_index */
 
 .recipe_index_image,.recipe_index_name,.recipe_index_username{
   text-align: center;
 }
 
+
 /* recipe_show */
 
 .recipe_title{
   text-align: center;
   font-size: 24px;
-
 }
 
 .recipe_image{
@@ -129,6 +163,21 @@ header{
 
 }
 
+
+/* making_new */
+.new_making_process{
+  width: 500px;
+  height: 200px;
+}
+
+
+/* account_new */
+.account_intoroduction_form{
+  width: 400px;
+  height: 170px;
+}
+
+
 /* account_show */
 
 .account_name_area{
@@ -156,6 +205,10 @@ header{
 .account_option_head{
   text-align: center;
   border-bottom: double 6px orange;
+}
+
+.farmer_option{
+  text-align: center;
 }
 
 .new_recipe_button{
@@ -189,6 +242,18 @@ header{
 
 .pick_up h4{
   text-align: center;
+}
+
+.pick_up_image img{
+  width: 200px;
+  height: 150px;
+}
+
+
+/* crops_new */
+.crop_introduction_box{
+  width: 500px;
+  height: 200px;
 }
 
 /* Admins 側 CSS */

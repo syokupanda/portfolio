@@ -1,2 +1,36 @@
-<h1>Crops#index</h1>
-<p>Find me in app/views/crops/index.html.erb</p>
+<div class="container">
+  <h1>Crops#index</h1>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>投稿画像</th>
+        <th>投稿画像紹介文</th>
+        <th>
+          <%= link_to new_account_crop_path(current_user.id) do %>
+            <button type="button" class="btn btn-success">新規登録する</button>
+          <% end %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @crops.each do |crop| %>
+        <tr>
+          <td>
+            <div class="category_image">
+              <%= attachment_image_tag(crop, :image, fallback: "no_image.jpg") %>
+            </div>
+          </td>
+          <td><%= simple_format(crop.introduction) %></td>
+          <td>
+            <span class="making_edit">
+              <%=link_to '編集する', edit_account_crop_path(crop.user_id, crop.id)  %>
+            </span>
+            <br><br>
+            <span class="making_destroy">
+              <%=link_to '削除する', account_crop_path(crop.user_id, crop.id), method: :delete  %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+  </div>
+</div>

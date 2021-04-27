@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @user.nickname %>のマイページ</h1>
+  <h1><%= @user.your_farmer %>のマイページ</h1>
   <div class="row">
     <div class="col-xs-col-12 col-lg-8">
       <div class="account_name_area">
@@ -19,20 +19,22 @@
             <h5 class="account_option_head">アカウントオプション</h5>
             <div class="new_recipe_button">
               <%= link_to new_recipe_path do %>
-                <button type="button" class="btn btn-primary">レシピ新規登録</button>
+                <p>レシピ新規登録</p>
               <% end %>
             </div>
             <div class="edit_button">
               <%= link_to edit_account_path(@user.id) do %>
-                <button type="button" class="btn btn-success">編集する</button>
+                <p>編集する</p>
               <% end %>
-                <button type="button" class="btn btn-danger">退会する</button><!--別の場所にしようかな-->
+                <p>退会する</p>
             </div>
             <% if @user.is_farmer == true %>
               <h5 class="account_option_head">生産者オプション</h5>
-                <%= link_to account_crops_path(@user.id) do %>
-                  <button type="button" class="btn btn-success">生産物登録</button>
-                <% end %>
+                <div class="farmer_option">
+                  <%= link_to account_crops_path(@user.id) do %>
+                    <p>生産物紹介編集</p>
+                  <% end %>
+                </div>
             <% end %>
           </div>
         <% else %>
@@ -40,18 +42,32 @@
 
       </div>
       <div class="account_intoroduction">
-        <%= @user.introduction %>
+        <%= simple_format(@user.introduction) %>
       </div>
       <div class="pick_up">
+  <!-- 一般ユーザーだった場合にはおすすめのレシピ表示 -->
         <% if @user.is_farmer == false %>
-          一般ユーザー
-        <% else %>
-        <h4>~私が作りました！~</h4>
+        <h4>~おすすめレシピ！~</h4>
         <div class="slide">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
+          <% @pick_up.each do |pick_up| %>
+            <div class="pick_up_image">
+              <%= attachment_image_tag(pick_up, :image) %>
+            </div>
+          <% end %>
         </div>
+  <!-- 生産者ユーザーだった場合には生産物表示 -->
+        <% else %>
+          <% if @crops.count == 0 %>
+          <% else %>
+            <h4>~私が作りました！~</h4>
+            <div class="slide">
+              <% @crops.each do |crop| %>
+                <div class="pick_up_image">
+                  <%= attachment_image_tag(crop, :image) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -70,9 +86,4 @@
       <p><%= @user.nickname %>さんのすべてのレシピ</p>
     </div>
   </div>
-
-
-  <br>
-  <%= @user.email %>
-
 </div>
