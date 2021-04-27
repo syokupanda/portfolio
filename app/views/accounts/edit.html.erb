@@ -1,32 +1,45 @@
-<h1>Accounts#edit</h1>
+<div class="container">
+  <h1>～アカウント編集～</h1>
+    <%= form_with model: @user, url:account_path, local:true do |f| %>
+    <div class="row">
+      <div class="col-12 my-2">
+        <%= f.label :"アイコン画像" %><br>
+        <%= f.attachment_field :image %><br>
+      </div>
 
-<%= form_with model: @user, url:account_path, local:true do |f| %>
-  <div class="field">
-    <%= f.label :"姓" %><br>
-    <%= f.text_field :last_name %>
-  </div>
+      <div class="col-12 my-2">
+        <%= f.label :"ニックネーム" %><br>
+        <%= f.text_field :nickname %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"名" %><br>
-    <%= f.text_field :first_name %>
-  </div>
+      <div class="col-4 my-2">
+        <%= f.label :"姓" %><br>
+        <%= f.text_field :last_name %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"姓（ふりがな）" %>
-    <%= f.text_field :last_name_kana %>
-  </div>
+      <div class="col-6 my-2">
+        <%= f.label :"名" %><br>
+        <%= f.text_field :first_name %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"名（ふりがな）" %>
-    <%= f.text_field :first_name_kana %>
-  </div>
+      <div class="col-4 my-2">
+        <%= f.label :"姓（ふりがな）" %><br>
+        <%= f.text_field :last_name_kana %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"紹介" %>
-    <%= f.text_area :introduction %>
-  </div>
+      <div class="col-6 my-2">
+        <%= f.label :"名（ふりがな）" %><br>
+        <%= f.text_field :first_name_kana %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "アカウント情報を変更", class: "btn btn-success" %>
-  </div>
-<% end %>
+      <div class="col-12 my-2">
+        <%= f.label :"紹介" %><br>
+        <%= f.text_area :introduction, class: "account_intoroduction_form" %>
+      </div>
+
+      <div class="col-12 my-2">
+        <%= f.submit "アカウント情報を変更", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

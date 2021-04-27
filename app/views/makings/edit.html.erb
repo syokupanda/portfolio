@@ -1,0 +1,12 @@
+<div class="container">
+<h1>～調理手順編集～</h1>
+  <%= form_with model: @making, url: recipe_making_path(@recipe.id, @making.id), local: true do |f| %>
+    <%= f.label :"参考画像" %><br>
+    <%= f.attachment_field :image %><br>
+    <br>
+    <%= f.label :"調理手順" %><br>
+    <%= f.text_field :process %><br>
+    <br>
+    <%= f.submit '調理手順追加', class: "btn btn-success" %>
+  <% end %>
+</div>

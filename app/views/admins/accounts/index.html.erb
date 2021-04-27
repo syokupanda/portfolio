@@ -1,0 +1,41 @@
+<div class="container" >
+  <h1>管理者ユーザー一覧</h1>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>ニックネーム</th>
+        <th>メールアドレス</th>
+        <th>生産者ステータス</th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to admins_account_path(user) do %>
+              <%= user.nickname %>
+            <% end %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td>
+            <% if user.is_farmer == false %>
+              一般ユーザー
+            <% else %>
+              <span class="color-green">生産者ユーザー</span>
+            <% end %>
+          </td>
+          <td>
+            <% if user.is_deleted == false %>
+              <span class="color-blue">有効</span>
+            <% else %>
+              <span class="color-red">退会</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

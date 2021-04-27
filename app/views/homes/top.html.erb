@@ -1,3 +1,30 @@
 <%= link_to new_admin_session_path do %>
   <p>管理者ページへ</p>
 <% end %>
+<div class="container">
+  <div class="top_logo">
+    <img src="/assets/Crops Cooking.png" alt="ロゴ">
+  </div>
+  <div class="about">
+    <h1>About</h1>
+    <div class="about-text">
+      <p>てすと
+      
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-4">
+        <%= link_to category_category_index_path(category.id) do %>
+          <div class="top_category_image">
+            <%= attachment_image_tag(category, :image, fallback: "no_image.jpg") %>
+            <p>
+              <%= category.name %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

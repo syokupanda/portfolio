@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Crops#edit</h1>
+  <div class="row">
+    <%= form_with model: @crop, url: account_crop_path(@crop.user_id, @crop.id), local:true do |f| %>
+      <div class="col-12 my-3">
+        <%= f.label :"投稿画像" %><br>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="col-12 my-3">
+        <%= f.label :"投稿画像紹介" %><br>
+        <%= f.text_area :introduction, class: "crop_introduction_box" %>
+      </div>
+      <div class="col-12 my-3">
+        <%= f.submit '更新する', class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>

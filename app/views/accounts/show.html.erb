@@ -1,14 +1,91 @@
-<h1>Accounts#show</h1>
+<div class="container">
+  <h1>～<%= @user.your_farmer %>のマイページ～</h1>
+  <div class="row">
+    <div class="col-xs-col-12 col-lg-8">
+      <div class="account_name_area">
+        <div class="account_icon">
+          <%= attachment_image_tag(@user, :image, size: "200x200", fallback: "no_image.jpg") %>
+        </div>
+        <div class="account_name">
+　        <%= @user.nickname %>
+　        <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", account_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "フォローする", account_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        </div>
+        <% if @user == current_user %>
+          <div class="account_option">
+            <h5 class="account_option_head">アカウントオプション</h5>
+            <div class="new_recipe_button">
+              <%= link_to new_recipe_path do %>
+                <p>レシピ新規登録</p>
+              <% end %>
+            </div>
+            <div class="edit_button">
+              <%= link_to edit_account_path(@user.id) do %>
+                <p>編集する</p>
+              <% end %>
+              <%= link_to account_quit_path do %>
+                <p>退会する</p>
+              <% end %>
+            </div>
+            <% if @user.is_farmer == true %>
+              <h5 class="account_option_head">生産者オプション</h5>
+                <div class="farmer_option">
+                  <%= link_to account_crops_path(@user.id) do %>
+                    <p>生産物紹介編集</p>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+        <% else %>
+        <% end %>
 
-<%= @user.last_name %><%= @user.first_name %><br>
-<%= @user.last_name_kana %><%= @user.first_name_kana %><br>
-<%= @user.introduction %><br>
-<%= @user.email %><br>
-<%= link_to new_recipe_path do %>
-  <button type="button" class="btn btn-success">レシピ新規登録</button>
-<% end %>
-<%= link_to edit_account_path(@user.id) do %>
-  <button type="button" class="btn btn-success">編集する</button>
-<% end %>
-
-  <button type="button" class="btn btn-danger">削除する</button>
+      </div>
+      <div class="account_intoroduction">
+        <%= simple_format(@user.introduction) %>
+      </div>
+      <div class="pick_up">
+  <!-- 一般ユーザーだった場合にはおすすめのレシピ表示 -->
+        <% if @user.is_farmer == false %>
+        <h4>~おすすめレシピ！~</h4>
+        <div class="slide">
+          <% @pick_up.each do |pick_up| %>
+            <div class="pick_up_image">
+              <%= attachment_image_tag(pick_up, :image) %>
+            </div>
+          <% end %>
+        </div>
+  <!-- 生産者ユーザーだった場合には生産物表示 -->
+        <% else %>
+          <% if @crops.count == 0 %>
+          <% else %>
+            <h4>~私が作りました！~</h4>
+            <div class="slide">
+              <% @crops.each do |crop| %>
+                <div class="pick_up_image">
+                  <%= attachment_image_tag(crop, :image) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+      <div class="posting_recipe">
+        <p>投稿したレシピ  <%= @myrecipes.count %>件</p>
+      </div>
+      <div class="my_posting_recipe">
+        <% @myrecipes.last(4).each do |myrecipe| %>
+          <%= link_to recipe_path(myrecipe.id) do %>
+            <%= attachment_image_tag(myrecipe, :image, size: "270x180", fallback: "no_image.jpg") %>
+          <% end %>
+          <p><%= myrecipe.name %></p>
+        <% end %>
+      </div>
+      <p><%= @user.nickname %>さんのすべてのレシピ</p>
+    </div>
+  </div>
+</div>

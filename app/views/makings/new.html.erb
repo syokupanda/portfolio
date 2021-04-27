@@ -1,0 +1,28 @@
+<div class="container">
+<h1>～調理手順登録～</h1>
+  <%= form_with model: @making, url: recipe_makings_path, local: true do |f| %>
+    <%= f.label :"参考画像" %><br>
+    <%= f.attachment_field :image %><br>
+    <br>
+    <%= f.label :"調理手順" %><br>
+    <%= f.text_area :process, class: "new_making_process" %><br>
+    <br>
+    <%= f.submit '調理手順追加', class: "btn btn-success" %>
+  <% end %>
+  <h5>【登録する調理手順】*後で追加・編集できます</h5>
+  <%= link_to '調理手順を終了する', recipe_path(@recipe.id) %>
+  <% @makings.each do |making| %>
+  　<div class="row">
+  　   <div class="col-3">
+  　     <p class="making_image_box">
+          <%= attachment_image_tag(making, :image) %>
+        </p>
+      </div>
+      <div class="col-7">
+        <div class="making_process_box">
+          <%= making.process %>
+        </div>
+      </div>
+    </div>
+　<% end %>
+</div>

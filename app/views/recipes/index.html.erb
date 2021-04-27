@@ -1,13 +1,31 @@
 <div class="container">
-  <h1>Recipes#index</h1>
+  <h1>～レシピ一覧～</h1>
+  <div class="search_box">
+    <%= search_form_for @search do |f| %>
+      <%= f.label :name, "レシピ名検索" %>
+      <%= f.search_field :name_cont %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
   <div class="row">
     <% @recipes.each do |recipe| %>
-      <div class="col-5 mx-3 my-3">
-        <%= link_to recipe_path(recipe.id) do %>
-          <%= attachment_image_tag(recipe, :image, size: "220x170", fallback: "no_image.jpg") %>
+      <div class="col-sm-6 col-lg-3 my-3">
+        <div class="recipe_index_image">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= attachment_image_tag(recipe, :image, size: "220x150", fallback: "no_image.jpg") %>
+          <% end %>
+        </div>
+        <p class="recipe_index_name"><%= recipe.name %></p>
+        <%= link_to account_path(recipe.user) do %>
+          <p class="recipe_index_username">作成者：<%= recipe.user.nickname %></p>
         <% end %>
-        <%= recipe.name %>
-        <%= recipe.introduction %>
+        <% if recipe.tag_counts_on(:tags).present? %>
+          <% recipe.tag_counts_on(:tags).each do |tag| %>
+            <%= link_to "##{tag.name}" %>
+          <% end %>
+        <% else %>
+         <p> 登録されているタグはありません </p>
+        <% end %>
       </div>
     <% end %>
   </div>
