@@ -14,21 +14,24 @@
             <%= render partial: 'favorites/favorite', locals: {recipe: @recipe} %>
           </div>
   <!-- end -->
-          <% if @recipe.user_id == current_user.id %>
-            <div class="recipe_option_button">
-              <%= link_to edit_recipe_path(@recipe.id) do %>
-                <button type="button" class="btn btn-success">レシピを編集する</button>
-              <% end %>
-              <%= link_to recipe_path(@recipe.id), method: :delete do %>
-                <button type="button" class="btn btn-danger">レシピを削除する</button>
-              <% end %>
-            </div>
+          <% if user_signed_in? %>
+            <% if @recipe.user_id == current_user.id %>
+              <div class="recipe_option_button">
+                <%= link_to edit_recipe_path(@recipe.id) do %>
+                  <button type="button" class="btn btn-success">レシピを編集する</button>
+                <% end %>
+                <%= link_to recipe_path(@recipe.id), method: :delete do %>
+                  <button type="button" class="btn btn-danger">レシピを削除する</button>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="recipe_option_button">
+                <%= link_to account_path(@recipe.user_id) do %>
+                  作成者：<%= @user.nickname %>
+                <% end %>
+              </div>
+            <% end %>
           <% else %>
-            <div class="recipe_option_button">
-              <%= link_to account_path(@recipe.user_id) do %>
-                作成者：<%= @user.nickname %>
-              <% end %>
-            </div>
           <% end %>
         </div>
       </div>
@@ -45,13 +48,15 @@
       </div>
     </div>
 
-
-    <% if @recipe.user_id == current_user.id %>
-      <div class="row">
-        <%=link_to new_recipe_making_path(@recipe.id) do %>
-          <button type="button" class="btn btn-success">調理手順を追加する</button>
-        <% end %>
-      </div>
+    <% if user_signed_in? %>
+      <% if @recipe.user_id == current_user.id %>
+        <div class="row">
+          <%=link_to new_recipe_making_path(@recipe.id) do %>
+            <button type="button" class="btn btn-success">調理手順を追加する</button>
+          <% end %>
+        </div>
+      <% else %>
+      <% end %>
     <% else %>
     <% end %>
   　<% @making.each do |making| %>
@@ -66,32 +71,38 @@
             <%= making.process %>
           </div>
         </div>
-      <% if @recipe.user_id == current_user.id %>
-        <div class="col-1">
-          <div class="making_option">
-            <span class="making_edit">
-              <%=link_to '編集する', edit_recipe_making_path(@recipe.id, making.id)  %>
-            </span>
-            <br><br>
-            <span class="making_destroy">
-              <%=link_to '削除する', recipe_making_path(@recipe.id, making.id), method: :delete  %>
-            </span>
+      <% if user_signed_in? %>
+        <% if @recipe.user_id == current_user.id %>
+          <div class="col-1">
+            <div class="making_option">
+              <span class="making_edit">
+                <%=link_to '編集する', edit_recipe_making_path(@recipe.id, making.id)  %>
+              </span>
+              <br><br>
+              <span class="making_destroy">
+                <%=link_to '削除する', recipe_making_path(@recipe.id, making.id), method: :delete  %>
+              </span>
+            </div>
           </div>
-        </div>
+        <% else %>
+        <% end %>
       <% else %>
       <% end %>
       </div>
   　<% end %>
 
-
-    <div class="new_revew">
-      <%= form_with(model:[@recipe, @review], url:recipe_reviews_path(@recipe.id), local:true) do |f| %>
-        <%= f.label :"レビュー" %>
-        <div id="evaluate_stars"></div>
-        <%= f.text_field :comment %>
-        <%= f.submit 'レビュー投稿', class: "btn btn-success" %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="new_revew">
+        <%= form_with(model:[@recipe, @review], url:recipe_reviews_path(@recipe.id), local:true) do |f| %>
+          <%= f.label :"レビュー" %>
+          <div id="evaluate_stars"></div>
+          <%= f.text_field :comment %>
+          <%= f.submit 'レビュー投稿', class: "btn btn-success" %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>*ユーザー登録いただくとコメントができます</p>
+    <% end %>
 
     <div class="reviews">
       <p>レビュー数：<%= @recipe.reviews.count %></p>
