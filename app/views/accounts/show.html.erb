@@ -8,37 +8,43 @@
         </div>
         <div class="account_name">
 　        <%= @user.nickname %>
-　        <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", account_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+　        <% if user_signed_in? %>
+  　        <% if current_user.following?(@user) %>
+              <%= link_to "フォロー外す", account_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "フォローする", account_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+            <% end %>
           <% else %>
-            <%= link_to "フォローする", account_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
           <% end %>
         </div>
-        <% if @user == current_user %>
-          <div class="account_option">
-            <h5 class="account_option_head">アカウントオプション</h5>
-            <div class="new_recipe_button">
-              <%= link_to new_recipe_path do %>
-                <p>レシピ新規登録</p>
+        <% if user_signed_in? %>
+          <% if @user == current_user %>
+            <div class="account_option">
+              <h5 class="account_option_head">アカウントオプション</h5>
+              <div class="new_recipe_button">
+                <%= link_to new_recipe_path do %>
+                  <p>レシピ新規登録</p>
+                <% end %>
+              </div>
+              <div class="edit_button">
+                <%= link_to edit_account_path(@user.id) do %>
+                  <p>編集する</p>
+                <% end %>
+                <%= link_to account_quit_path do %>
+                  <p>退会する</p>
+                <% end %>
+              </div>
+              <% if @user.is_farmer == true %>
+                <h5 class="account_option_head">生産者オプション</h5>
+                  <div class="farmer_option">
+                    <%= link_to account_crops_path(@user.id) do %>
+                      <p>生産物紹介編集</p>
+                    <% end %>
+                  </div>
               <% end %>
             </div>
-            <div class="edit_button">
-              <%= link_to edit_account_path(@user.id) do %>
-                <p>編集する</p>
-              <% end %>
-              <%= link_to account_quit_path do %>
-                <p>退会する</p>
-              <% end %>
-            </div>
-            <% if @user.is_farmer == true %>
-              <h5 class="account_option_head">生産者オプション</h5>
-                <div class="farmer_option">
-                  <%= link_to account_crops_path(@user.id) do %>
-                    <p>生産物紹介編集</p>
-                  <% end %>
-                </div>
-            <% end %>
-          </div>
+          <% else %>
+          <% end %>
         <% else %>
         <% end %>
 
