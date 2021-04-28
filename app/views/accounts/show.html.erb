@@ -7,12 +7,19 @@
           <%= attachment_image_tag(@user, :image, size: "200x200", fallback: "no_image.jpg") %>
         </div>
         <div class="account_name">
-　        <%= @user.nickname %>
+　        <p><%= @user.nickname %></p>
+　        <p>
+    　      フォロー数：<%= @user.follows.count %>
+    　      フォロワー数：<%= @user.followers.count %>
+　        </p>
 　        <% if user_signed_in? %>
-  　        <% if current_user.following?(@user) %>
-              <%= link_to "フォロー外す", account_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to "フォローする", account_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+　          <% if @user == current_user %>
+　          <% else %>
+    　         <% if current_user.following?(@user) %>
+                <%= link_to "フォロー外す", account_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+              <% else %>
+                <%= link_to "フォローする", account_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+              <% end %>
             <% end %>
           <% else %>
           <% end %>
