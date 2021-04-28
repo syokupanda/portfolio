@@ -28,3 +28,12 @@
 
 ## チャレンジ要素
 https://docs.google.com/spreadsheets/d/1eX0QC6nponGA4O5xDFwofy0Xt4_PcOdMOdjjXqx7h4M/edit?usp=sharing
+
+## 使用言語・環境
+- OS : Linux
+- Ruby
+- HTML & CSS
+- JavaScript
+- Ruby on Rails
+- jQuery
+- IDE : Cloud9
