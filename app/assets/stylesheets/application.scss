@@ -65,6 +65,7 @@ header{
 .about h1{
   width: 150px;
   margin: 10px auto;
+  padding-top: 50px;
   font-size: 60px;
 }
 
@@ -282,4 +283,8 @@ header{
 
 .color-blue{
   color: blue;
+}
+
+.border-orange{
+  border-bottom: solid 2px orange;
 }
