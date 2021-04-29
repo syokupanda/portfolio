@@ -7,11 +7,9 @@
           <%= attachment_image_tag(@user, :image, size: "200x200", fallback: "no_image.jpg") %>
         </div>
         <div class="account_name">
-　        <p><%= @user.nickname %></p>
-　        <p>
-    　      フォロー数：<%= @user.follows.count %>
-    　      フォロワー数：<%= @user.followers.count %>
-　        </p>
+          <br>
+          <p><span class="border-orange">ニックネーム</span><br><%= @user.nickname %></p>
+　        <p>フォロー数：<%= @user.follows.count %><br>フォロワー数：<%= @user.followers.count %></p>
 　        <% if user_signed_in? %>
 　          <% if @user == current_user %>
 　          <% else %>
