@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+   attachment :image
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -19,7 +20,15 @@ class User < ApplicationRecord
   has_many :follows, through: :relationships, source: :followed
   #--------------------------------------------
 
-  attachment :image
+  #---------バリデーション------------------
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true
+  validates :nickname, presence: true
+  #-----------------------------------------
+
+
 
   def your_farmer
     if self.is_farmer == true

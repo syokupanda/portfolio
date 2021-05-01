@@ -9,6 +9,11 @@ class Recipe < ApplicationRecord
   has_many :making, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  #-------------バリデーション-----------------
+  validates :name, presence: true
+  validates :ingredients, presence: true
+  #--------------------------------------------
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

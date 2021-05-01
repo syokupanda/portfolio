@@ -4,6 +4,8 @@ class Review < ApplicationRecord
     greater_than_or_equal_to: 1
   }, presence: true
   
+  validates :comment, presence: true
+  
   belongs_to :user
   belongs_to :recipe
 end

@@ -22,8 +22,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
-    redirect_to new_recipe_making_path(@recipe.id)
+    if @recipe.save
+      redirect_to new_recipe_making_path(@recipe.id)
+    else
+      flash[:error] = "必須項目を入力してください"
+      redirect_to new_recipe_path
+    end
   end
 
   def edit
@@ -33,8 +37,12 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe.id)
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe.id)
+    else
+      flash[:error] = "必須項目を入力してください"
+      redirect_to edit_recipe_path(@recipe)
+    end
   end
 
   def destroy
