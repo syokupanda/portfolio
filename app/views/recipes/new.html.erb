@@ -1,5 +1,6 @@
 <div class="container">
   <h1>～レシピ新規登録画面～</h1>
+  <p class="color-red"><%= flash[:error] %></p>
   <div class="row">
     <%= form_with model: @recipe, url:'/recipes', local:true do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
@@ -8,7 +9,7 @@
         <%= f.attachment_field :image %>
       </div>
       <div class="col-12 my-3">
-        <%= f.label :"レシピ名" %>
+        <%= f.label :"レシピ名(必須）" %>
         <%= f.text_field :name %>
       </div>
       <div class="col-12 my-3">
@@ -16,7 +17,7 @@
         <%= f.text_area :introduction, class: "recipe_point_box" %>
       </div>
       <div class="col-12 my-3">
-        <p>材料</p>
+        <p>材料（必須）</p>
         <%= f.text_area :ingredients, class: "recipe_ingredients_box" %>
       </div>
       <div class="col-12 my-3">
