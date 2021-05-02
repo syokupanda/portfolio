@@ -5,11 +5,11 @@
     <%= form_with model: @recipe, url:'/recipes', local:true do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <div class="col-12 my-3">
-        <%= f.label :"レシピ完成品画像" %>
+        <%= f.label :"レシピ完成品画像(必須)" %><br>
         <%= f.attachment_field :image %>
       </div>
       <div class="col-12 my-3">
-        <%= f.label :"レシピ名(必須）" %>
+        <%= f.label :"レシピ名(必須）" %><br>
         <%= f.text_field :name %>
       </div>
       <div class="col-12 my-3">

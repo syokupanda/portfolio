@@ -45,6 +45,11 @@
           <p>調理ポイント</p>
           <p><%= simple_format(@recipe.introduction) %></p>
         </div>
+        <div>
+          <% @recipe.recipe_ai_tags.each do |tag| %>
+            <span class="badge badge-info"><%= tag.name %></span>
+          <% end %>
+        </div>
       </div>
     </div>
 
