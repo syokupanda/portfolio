@@ -22,7 +22,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+
     if @recipe.save
+       tags = Vision.get_image_data(@recipe.image)
+        tags.each do |tag|
+          @recipe.recipe_ai_tags.create(name: tag)
+        end
       redirect_to new_recipe_making_path(@recipe.id)
     else
       flash[:error] = "必須項目を入力してください"
@@ -37,7 +42,13 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    byebug
     if @recipe.update(recipe_params)
+      @recipe.recipe_ai_tags.destroy_all
+      tags = Vision.get_image_data(@recipe.image)
+        tags.each do |tag|
+          @recipe.recipe_ai_tags.create(name: tag)
+        end
       redirect_to recipe_path(@recipe.id)
     else
       flash[:error] = "必須項目を入力してください"
