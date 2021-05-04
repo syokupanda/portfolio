@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Sign up</h2>
+  <h2>アカウント作成</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
 
@@ -10,43 +10,43 @@
       </div>
 
       <div class="col-12 my-2">
-        <%= f.label :"ニックネーム" %><br>
-        <%= f.text_field :nickname %>
+        <%= f.label :"ニックネーム" %>（＊こちらが表示される名前です）<br>
+        <%= f.text_field :nickname, :placeholder => "やまだーん" %>
       </div>
 
       <div class="col-4 my-2">
         <%= f.label :"姓" %><br>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :last_name, :placeholder => "山田" %>
       </div>
 
       <div class="col-6 my-2">
         <%= f.label :"名" %><br>
-        <%= f.text_field :first_name %>
+        <%= f.text_field :first_name, :placeholder => "太郎" %>
       </div>
 
       <div class="col-4 my-2">
         <%= f.label :"姓（ふりがな）" %><br>
-        <%= f.text_field :last_name_kana %>
+        <%= f.text_field :last_name_kana, :placeholder => "やまだ" %>
       </div>
 
       <div class="col-6 my-2">
         <%= f.label :"名（ふりがな）" %><br>
-        <%= f.text_field :first_name_kana %>
+        <%= f.text_field :first_name_kana, :placeholder => "たろう" %>
       </div>
 
       <div class="col-12 my-2">
         <%= f.label :"紹介" %><br>
-        <%= f.text_area :introduction, class: "account_intoroduction_form" %>
+        <%= f.text_area :introduction, :placeholder => "（例）よろしくお願いいたします。", class: "account_intoroduction_form" %>
       </div>
 
       <div class="col-12 my-2">
-        <%= f.label :email %>
+        <%= f.label :email %><br>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="col-12 my-2">
         <% if @minimum_password_length %>
-        <em>パスワード(<%= @minimum_password_length %> 文字以上)</em>
+        <em>パスワード(<%= @minimum_password_length %> 文字以上)</em><br>
         <% end %>
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
