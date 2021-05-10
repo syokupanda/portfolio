@@ -25,6 +25,10 @@
 - 自分の料理を見てほしい時
 
 ## 設計書
+- ER図
+- https://drive.google.com/file/d/1u4ANLleU03FQZmLJsrGzmaQ282wWcOnw/view?usp=sharing
+- テーブル定義書
+- https://docs.google.com/spreadsheets/d/1OFVNIlK7mWOTowX8k0hwKLG_7XpzjD6IdGi0s0ZUhAc/edit?usp=sharing
 
 ## チャレンジ要素
 https://docs.google.com/spreadsheets/d/1eX0QC6nponGA4O5xDFwofy0Xt4_PcOdMOdjjXqx7h4M/edit?usp=sharing
