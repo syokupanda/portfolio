@@ -90,3 +90,8 @@ end
 
 # 検索機能sansack
 gem 'ransack'
+
+# brakeman
+group :development do
+  gem 'brakeman', :require => false
+end
