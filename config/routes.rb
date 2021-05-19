@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :crops, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resources :categories, only: [:new, :create, :destroy, :index] do
+  resources :categories, only: [:new, :create, :destroy, :index, :edit, :update] do
     get '/category_index' => 'recipes#category_index'
   end
 
