@@ -35,9 +35,7 @@ https://docs.google.com/spreadsheets/d/1eX0QC6nponGA4O5xDFwofy0Xt4_PcOdMOdjjXqx7
 
 ## 使用言語・環境
 - OS : Linux
-- Ruby
-- HTML & CSS
-- JavaScript
-- Ruby on Rails
-- jQuery
+- 言語 : HTML, CSS, JavaScript, Ruby, SQL
+- フレームワーク : Ruby on Rails, Bootstrap
+- JSライブラリ : jQuery
 - IDE : Cloud9
