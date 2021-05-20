@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>カテゴリー編集</h1>
+  <div class="row">
+    <%= form_with model: @category, url: category_path(@category.id), local: true do |f| %>
+      <div class="col-12 my-3">
+        <%= f.label :"カテゴリー画像" %><br>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="col-12 my-3">
+        <%= f.label :"カテゴリー名" %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="col-12 my-3">
+        <%= f.submit 'カテゴリ内容更新' %>
+      </div>
+    <% end %>
+  </div>
+</div>
