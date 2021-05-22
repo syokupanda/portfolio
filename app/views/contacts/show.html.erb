@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>【<%= @contact.title %>】詳細</h1>
+  <p>問い合わせカテゴリ－</p>
+  <div class="contact_category">
+      <%= @contact.category %>
+  </div>
+  <p>問い合わせ内容</p>
+  <div class="contact_text">
+     <%= @contact.text %>
+  </div>
+  <%= link_to contacts_path do %>
+    <button type="button" class="btn btn-success">一覧に戻る</button>
+  <% end %>
+</div>
+
+

@@ -218,7 +218,7 @@ header{
   margin-bottom: 5px;
 }
 
-.edit_button,.my_posting_recipe{
+.contact_button,.edit_button,.my_posting_recipe{
   text-align: center;
 }
 
@@ -249,6 +249,19 @@ header{
 .pick_up_image img{
   width: 200px;
   height: 150px;
+}
+
+/* contact_show */
+.contact_category{
+  width: 40%;
+  margin-bottom: 20px;
+  border: solid 1px #000000;
+}
+
+.contact_text{
+  width: 100%;
+  margin-bottom: 20px;
+  border: solid 1px #000000;
 }
 
 
