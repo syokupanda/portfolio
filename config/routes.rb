@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'contacts/index'
-  get 'contacts/show'
-  get 'contacts/edit'
-  get 'contacts/update'
   namespace :admins do
     resources :accounts, only: [:index, :show, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :edit, :update]
