@@ -6,6 +6,7 @@
         <th>ユーザー名</th>
         <th>問い合わせ内容</th>
         <th>タイトル</th>
+        <th>ステータス</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
             <%= link_to admins_contact_path(contact.id) do %>
               <%= contact.title %>
             <% end %>
+          </td>
+          <td>
+            <%= contact.status %>
           </td>
         </tr>
       <% end %>
