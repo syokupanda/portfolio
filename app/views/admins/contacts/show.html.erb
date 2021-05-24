@@ -8,6 +8,9 @@
   <div class="contact_text">
      <%= @contact.text %>
   </div>
+  <%= link_to edit_admins_contact_path(@contact.id) do %>
+    <button type="button" class="btn btn-success">申請への回答</button>
+  <% end %>
   <%= link_to admins_contacts_path do %>
     <button type="button" class="btn btn-success">一覧に戻る</button>
   <% end %>
