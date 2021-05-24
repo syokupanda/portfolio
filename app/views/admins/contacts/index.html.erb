@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>問い合わせ一覧</h1>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+        <th>問い合わせ内容</th>
+        <th>タイトル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td>
+            <%= contact.user.nickname %>
+          </td>
+          <td><%= contact.category %></td>
+          <td>
+            <%= link_to admins_contact_path(contact.id) do %>
+              <%= contact.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= contact.status %>
+          </td>
+        </tr>
+      <% end %>
+  </div>
+</div>

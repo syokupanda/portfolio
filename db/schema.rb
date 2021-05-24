@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_075736) do
+ActiveRecord::Schema.define(version: 2021_05_20_085925) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_075736) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id"
-    t.boolean "reject", default: false
+    t.boolean "is_permit", default: false
     t.integer "category", default: 0
     t.integer "status", default: 0
     t.string "title"

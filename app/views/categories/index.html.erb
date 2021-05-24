@@ -22,6 +22,7 @@
           </td>
           <td><%= category.name %></td>
           <td>
+            <%= link_to '編集', edit_category_path(category) %>&nbsp;&nbsp;
             <%= link_to '削除', category_path(category), method: :delete %>
           </td>
         </tr>
