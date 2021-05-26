@@ -13,9 +13,11 @@ class Recipe < ApplicationRecord
 
 
   #-------------バリデーション-----------------
-  validates :name, presence: true
-  validates :ingredients, presence: true
-  validates :image, presence: true
+  with_options presence: true do
+    validates :name
+    validates :ingredients
+    validates :image
+  end
   #--------------------------------------------
 
   def favorited_by?(user)

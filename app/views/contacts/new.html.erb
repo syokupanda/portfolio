@@ -1,5 +1,6 @@
 <div class="container">
   <h1>新規お問い合わせ</h1>
+  <p class="color-red"><%= flash[:error] %></p>
   <div class="row">
     <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
       <%= f.hidden_field :user_id, value: @user.id %>

@@ -22,11 +22,13 @@ class User < ApplicationRecord
   #--------------------------------------------
 
   #---------バリデーション------------------
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :first_name_kana, presence: true
-  validates :last_name_kana, presence: true
-  validates :nickname, presence: true
+  with_options presence: true do
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+    validates :nickname
+  end
   #-----------------------------------------
 
 
