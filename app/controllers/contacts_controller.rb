@@ -15,8 +15,12 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.save
-    redirect_to contacts_path
+    if @contact.save
+      redirect_to contacts_path
+    else
+      flash[:error] = "必須項目を入力してください"
+      redirect_to new_contact_path
+    end
   end
 
   def destroy
