@@ -1,3 +1,82 @@
 // Place all the styles related to the accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* account_new */
+.account_intoroduction_form{
+  width: 400px;
+  height: 170px;
+}
+
+
+/* account_show */
+
+.account_name_area{
+  display: flex;
+}
+
+.account_icon{
+  width: 30%;
+}
+
+.account_name{
+  width: 20%;
+}
+
+.account_option{
+  width: 45%;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.account_option_head{
+  text-align: center;
+  border-bottom: double 6px orange;
+}
+
+.farmer_option{
+  text-align: center;
+}
+
+.new_recipe_button{
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.contact_button,.edit_button,.my_posting_recipe{
+  text-align: center;
+}
+
+.account_intoroduction{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #474747;
+  background: whitesmoke;
+  border-left: double 7px #4ec4d3;
+  border-right: double 7px #4ec4d3;
+}
+
+.posting_recipe{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: double 5px #4ec4d3;
+}
+.posting_recipe p{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.pick_up h4{
+  text-align: center;
+}
+
+.pick_up_image img{
+  width: 200px;
+  height: 150px;
+}

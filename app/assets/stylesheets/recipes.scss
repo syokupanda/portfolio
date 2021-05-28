@@ -1,3 +1,86 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* recipe_new, recipe_edit form */
+
+.recipe_point_box{
+  width: 500px;
+  height: 200px;
+}
+
+.recipe_ingredients_box{
+  width: 500px;
+  height: 200px;
+}
+
+
+/* recipe_index */
+
+.recipe_index_image,.recipe_index_name,.recipe_index_username{
+  text-align: center;
+}
+
+
+/* recipe_show */
+
+.recipe_title{
+  text-align: center;
+  font-size: 24px;
+}
+
+.recipe_image{
+  margin-bottom: 10px;
+}
+
+.recipe_image img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#favorites_button{
+  width: 30%;
+}
+
+.recipe_option{
+  display: flex;
+}
+
+.recipe_option_button{
+  width: 70%;
+  text-align: right;
+}
+
+.use_food{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  color: #6091d3;/*文字色*/
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+
+.recipe_point{
+  padding: 8px 19px;
+  margin: 2em 0;
+  color: #2c2c2f;
+  background: #cde4ff;
+  border-top: solid 5px #5989cf;
+  border-bottom: solid 5px #5989cf;
+}
+
+
+.making_image_box img{
+  width: 100%;
+}
+
+.making_edit a{
+  color: green;
+  font-size: 12px;
+}
+
+.making_destroy a{
+  color: gray;
+  font-size: 12px;
+
+}
