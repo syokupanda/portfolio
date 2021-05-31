@@ -99,7 +99,9 @@
           <p><%= myrecipe.name %></p>
         <% end %>
       </div>
-      <p><%= @user.nickname %>さんのすべてのレシピ</p>
+      <%= link_to account_account_index_path(@user.id) do %>
+        <p><%= @user.nickname %>さんのすべてのレシピ</p>
+      <% end %>
     </div>
   </div>
 </div>

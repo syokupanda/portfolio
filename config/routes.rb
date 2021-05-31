@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     resources :crops, only: [:index, :new, :create, :edit, :update, :destroy]
+    get '/account_index' => 'recipes#account_index'
   end
   
   resources :contacts, only: [:index, :show, :new, :create, :destroy]
