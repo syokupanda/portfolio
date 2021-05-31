@@ -8,6 +8,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(category_id: params[:category_id])
   end
 
+  def account_index
+    @recipes = Recipe.where(user_id: params[:account_id])
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
     @review = Review.new
