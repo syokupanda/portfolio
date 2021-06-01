@@ -17,6 +17,9 @@
     </div>
   </div>
   <div class="row">
+    <div class="category_recipe_index">
+      <h1>カテゴリー別レシピ一覧</h1>
+    </div>
     <% @categories.each do |category| %>
       <div class="col-4">
         <%= link_to category_category_index_path(category.id) do %>
