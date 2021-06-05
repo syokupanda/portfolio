@@ -68,6 +68,7 @@
           <% @pick_up.each do |pick_up| %>
             <div class="pick_up_image">
               <%= attachment_image_tag(pick_up, :image) %>
+              <p class="text_center"><b><%= pick_up.name %></b></p>
             </div>
           <% end %>
         </div>
@@ -80,6 +81,9 @@
               <% @crops.each do |crop| %>
                 <div class="pick_up_image">
                   <%= attachment_image_tag(crop, :image) %>
+                  <div class="pick_up_crop">
+                    <%= crop.introduction %>
+                  </div>
                 </div>
               <% end %>
             </div>
