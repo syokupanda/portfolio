@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>フォロー一覧</h1>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-3">
+        <p>
+          <%= attachment_image_tag(user, :image, size: "200x200", fallback: "no_image.jpg") %>
+        </p>
+        <%= link_to account_path(user.id) do %>
+          <%= user.nickname %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

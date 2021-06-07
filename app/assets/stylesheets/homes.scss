@@ -20,10 +20,11 @@
 }
 
 .about h1{
-  width: 150px;
+  width: 170px;
   margin: 10px auto;
   padding-top: 50px;
   font-size: 60px;
+  border-bottom: dashed 2px orange;
 }
 
 .about-text{
@@ -42,4 +43,9 @@
   text-align: center;
   width: 100%;
   margin-bottom: 20px;
+}
+
+.category_recipe_index h1{
+  padding-bottom: 10px;
+  border-bottom: solid 2px orange;
 }
