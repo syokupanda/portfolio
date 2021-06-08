@@ -11,7 +11,7 @@ class RelationshipsController < ApplicationController
   end
 
   def follows
-    user = User.fing(params[:account_id])
+    user = User.find(params[:account_id])
     @users = user.follows
   end
 
